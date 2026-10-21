@@ -6,7 +6,11 @@ unit_converter = FastAPI()
 
 conversion = {
     "length": {"km": 1000, "m": 1, "cm": 0.01},
-    "mass": {"kg": 1, "g": 0.001},
+"mass": {
+"kg": 1,
+"g": 0.001,
+"lb": 0.45359237
+},
     "data_storage": {
         "B": 1,
         "kB": 1000,
@@ -27,6 +31,7 @@ class Unit(str, Enum):
 
     kg = "kg"
     g = "g"
+    lb = "lb"
 
     B = "B"
     kB = "kB"

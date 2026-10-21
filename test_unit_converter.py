@@ -201,3 +201,29 @@ def test_c_to_f():
             )
     assert response.status_code == 200
     assert response.json()["result"] == 77.00
+
+
+def test_lb_to_kg():
+    assert calc("lb", "kg", 10) == pytest.approx(4.5359237)
+
+
+def test_kg_to_lb():
+    assert calc("kg", "lb", 1) == pytest.approx(2.2046226218)
+
+
+def test_lb_to_g():
+    assert calc("lb", "g", 1) == pytest.approx(453.59237)
+
+
+def test_lb_conversion_endpoint():
+    response = client.get(
+        "/convert",
+        params={
+            "value": 10,
+            "from_unit": "lb",
+            "to_unit": "kg"
+        }
+    )
+
+    assert response.status_code == 200
+    assert response.json()["result"] == pytest.approx(4.5359237)
